@@ -199,6 +199,64 @@ public class TeluskoJava {
         // objCar.playMusic();
         // objCar.drive();
 
+        // Inner Class
+
+        OuterClass outerObj = new OuterClass();
+        // outerObj.show();
+
+        OuterClass.InnerClass innerObj = outerObj.new InnerClass();
+        // innerObj.show();
+
+        // Anonymous Class
+
+        OuterClass anonymous = new OuterClass(){
+            public void show(){
+                // System.out.println("In new Show");
+            }
+        };
+        // anonymous.show();
+
+        // Interfaces
+
+        E interfaceObj;
+        interfaceObj = new F();
+        // interfaceObj.show();
+        // interfaceObj.config();
+        // System.out.println(E.area + E.age);
+
+        // Enum
+
+        Status status = Status.Running;
+        // System.out.println(status);
+        // System.out.println(status.ordinal());
+
+        if (status == Status.Running){
+            // System.out.println("Running..");
+        }
+        else if (status == Status.Pending){
+            // System.out.println("Pending..");
+        }
+        else if (status == Status.Failed){
+            // System.out.println("Failed..");
+        }
+        else if (status == Status.Success){
+            // System.out.println("Success..");
+        }
+
+        switch(status){
+            case Running:
+                // System.out.println("Running..");
+                break;
+            case Pending:
+                // System.out.println("Pending..");
+                break;
+            case Failed:
+                // System.out.println("Failed..");
+                break;
+            case Success:
+                // System.out.println("Success..");
+                break;
+        }
     }
 }
 
@@ -321,4 +379,36 @@ class BMW extends Car{
     public void drive(){
         System.out.println("Driving ...");
     }
+}
+
+class OuterClass{
+    public void show(){
+        System.out.println("Inside Outer Class");
+    }
+    class InnerClass{
+        public void show(){
+            System.out.println("Inside Inner Class");
+        }
+    }
+}
+
+interface E{
+    int age = 20; // by default variables are final and static
+    String area = "Mumbai";
+
+    void show(); // by default they are public and default
+    void config();
+}
+
+class F implements E{
+    public void show(){
+        System.out.println("In F show");
+    }
+    public void config(){
+        System.out.println("In F config");
+    }
+}
+
+enum Status{
+    Success, Pending, Failed, Running;
 }
