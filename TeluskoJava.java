@@ -2,8 +2,8 @@ public class TeluskoJava {
     public static void main(String a[]) {
         // Ternary Operator
 
-        int n = 15;
-        String s = n%2 == 0 ? "even" : "odd";
+        // int n = 15;
+        // String s = n%2 == 0 ? "even" : "odd";
         // System.out.println(s);
 
         // Switch Statement
@@ -59,17 +59,17 @@ public class TeluskoJava {
     
         // Calling classes
 
-        int num1 = 4;
-        int num2 = 7;
-        Calculator calc = new Calculator();
+        // int num1 = 4;
+        // int num2 = 7;
+        // Calculator calc = new Calculator();
         // System.out.println(calc.num); 
         // System.out.println(calc.add(num1, num2));
 
         // Arrays
 
-        int[] arr1 = new int[5];
-        int[] arr2 = new int[]{1,2,3,4,5,6};
-        int[] arr3 = {1,2,3,4,5,6};
+        // int[] arr1 = new int[5];
+        // int[] arr2 = new int[]{1,2,3,4,5,6};
+        // int[] arr3 = {1,2,3,4,5,6};
         // System.out.println(arr3[3]);
         // 2D Array
         int[][] nums = new int[4][5];
@@ -81,12 +81,12 @@ public class TeluskoJava {
             // System.out.println();
         }
         // System.out.println("printing Array elements by using enhanced for loop:");
-        for (int k[] : nums){
-            for(int m : k){
+        // for (int k[] : nums){
+            // for(int m : k){
                 // System.out.print(m + " ");
-            }
+            // }
             // System.out.println();
-        }
+        // }
         // Jagged Array
         int[][] jagged = new int[3][];
         jagged[0] = new int[3];
@@ -98,12 +98,12 @@ public class TeluskoJava {
             }
         }
         // System.out.println("printing JaggedArray elements by using enhanced for loop:");
-        for (int[] l : jagged){
-            for(int o : l){
+        // for (int[] l : jagged){
+            // for(int o : l){
                 // System.out.print(o + " ");
-            }
+            // }
             // System.out.println();
-        }
+        // }
 
         // Array of Objects
         Student s1 = new Student();
@@ -132,13 +132,13 @@ public class TeluskoJava {
         
         // For-each loop
 
-        for (Student student : students){
+        // for (Student student : students){
             // System.out.println(student.name);
-        }
+        // }
 
         // StringBuffer
 
-        StringBuffer sb = new StringBuffer("Biswadip");
+        // StringBuffer sb = new StringBuffer("Biswadip");
         // System.out.println(sb.capacity()); // default is 16 and on passing values it consumes required space + 16
         // System.out.println(sb.length());
         // System.out.println(sb.append(" Saha"));
@@ -178,48 +178,48 @@ public class TeluskoJava {
 
         // final - variable, method, class
 
-        final int finalNum = 8;
+        // final int finalNum = 8;
 
         // Dynamic Method Dispatch
 
-        C objC1 = new D(); // refrence of super class and object of sub-class
+        // C objC1 = new D(); // refrence of super class and object of sub-class
         // objC1.show1();
 
         // Upcasting and Downcasting
 
-        C objC2 = new D();
+        // C objC2 = new D();
         // objC1.show1();
 
-        D objD1 = (D) objC2;
+        // D objD1 = (D) objC2;
         // objD1.show2();
 
         // Abstract
 
-        BMW objCar = new BMW();
+        // BMW objCar = new BMW();
         // objCar.playMusic();
         // objCar.drive();
 
         // Inner Class
 
-        OuterClass outerObj = new OuterClass();
+        // OuterClass outerObj = new OuterClass();
         // outerObj.show();
 
-        OuterClass.InnerClass innerObj = outerObj.new InnerClass();
+        // OuterClass.InnerClass innerObj = outerObj.new InnerClass();
         // innerObj.show();
 
         // Anonymous Class
 
-        OuterClass anonymous = new OuterClass(){
-            public void show(){
+        // OuterClass anonymous = new OuterClass(){
+            // public void show(){
                 // System.out.println("In new Show");
-            }
-        };
+            // }
+        // };
         // anonymous.show();
 
         // Interfaces
 
-        E interfaceObj;
-        interfaceObj = new F();
+        // E interfaceObj;
+        // interfaceObj = new F();
         // interfaceObj.show();
         // interfaceObj.config();
         // System.out.println(E.area + E.age);
@@ -257,6 +257,13 @@ public class TeluskoJava {
                 // System.out.println("Success..");
                 break;
         }
+
+        // Laptop lap = Laptop.Macbook;
+        // System.out.println(lap + " : " + lap.getPrice());
+
+        // Annotations
+
+        
     }
 }
 
@@ -411,4 +418,26 @@ class F implements E{
 
 enum Status{
     Success, Pending, Failed, Running;
+}
+
+enum Laptop{
+    Macbook(2000), XPS(2200), Surface(1600), ThinkPad;
+
+    private int price;
+
+    private Laptop() {
+    }
+
+    private Laptop(int price){
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    
 }
