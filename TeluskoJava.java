@@ -1,4 +1,10 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
 public class TeluskoJava {
+    @SuppressWarnings("unused")
     public static void main(String a[]) {
         // Ternary Operator
 
@@ -9,7 +15,7 @@ public class TeluskoJava {
         // Switch Statement
 
         int dayNo = 1;
-        switch(dayNo){
+        switch (dayNo) {
             case 1:
                 // System.out.println("Monday");
                 break;
@@ -39,7 +45,7 @@ public class TeluskoJava {
         // While loop
 
         int i = 1;
-        while (i <=3){        
+        while (i <= 3) {
             // System.out.println(i);
             i++;
         }
@@ -47,22 +53,22 @@ public class TeluskoJava {
         // Do-while loop
 
         int j = 5;
-        do{
+        do {
             // System.out.println(j);
-        }while(j<=4);
+        } while (j <= 4);
 
         // For loop
 
-        for (int k = 1; k<4; k++){
+        for (int k = 1; k < 4; k++) {
             // System.out.println(k);
         }
-    
+
         // Calling classes
 
         // int num1 = 4;
         // int num2 = 7;
         // Calculator calc = new Calculator();
-        // System.out.println(calc.num); 
+        // System.out.println(calc.num);
         // System.out.println(calc.add(num1, num2));
 
         // Arrays
@@ -73,36 +79,37 @@ public class TeluskoJava {
         // System.out.println(arr3[3]);
         // 2D Array
         int[][] nums = new int[4][5];
-        for (i=0; i<4; i++){
-            for (j=0; j<5; j++){
-                nums[i][j] = (int)(Math.random()*10);
+        for (i = 0; i < 4; i++) {
+            for (j = 0; j < 5; j++) {
+                nums[i][j] = (int) (Math.random() * 10);
                 // System.out.print(nums[i][j] + " ");
             }
             // System.out.println();
         }
         // System.out.println("printing Array elements by using enhanced for loop:");
         // for (int k[] : nums){
-            // for(int m : k){
-                // System.out.print(m + " ");
-            // }
-            // System.out.println();
+        // for(int m : k){
+        // System.out.print(m + " ");
+        // }
+        // System.out.println();
         // }
         // Jagged Array
         int[][] jagged = new int[3][];
         jagged[0] = new int[3];
         jagged[1] = new int[4];
         jagged[2] = new int[2];
-        for (i=0; i<jagged.length; i++){
-            for (j=0; j<jagged[i].length; j++){
-                jagged[i][j] = (int)(Math.random()*10);
+        for (i = 0; i < jagged.length; i++) {
+            for (j = 0; j < jagged[i].length; j++) {
+                jagged[i][j] = (int) (Math.random() * 10);
             }
         }
-        // System.out.println("printing JaggedArray elements by using enhanced for loop:");
+        // System.out.println("printing JaggedArray elements by using enhanced for
+        // loop:");
         // for (int[] l : jagged){
-            // for(int o : l){
-                // System.out.print(o + " ");
-            // }
-            // System.out.println();
+        // for(int o : l){
+        // System.out.print(o + " ");
+        // }
+        // System.out.println();
         // }
 
         // Array of Objects
@@ -121,30 +128,32 @@ public class TeluskoJava {
         s3.name = "Ghyam";
         s3.marks = 97;
 
-        Student[] students = new Student[3] ;
+        Student[] students = new Student[3];
         students[0] = s1;
         students[1] = s2;
         students[2] = s3;
 
-        for(i=0;i<students.length;i++){
-            // System.out.println(students[i].roll + " : " + students[i].name + " : " + students[i].marks);
+        for (i = 0; i < students.length; i++) {
+            // System.out.println(students[i].roll + " : " + students[i].name + " : " +
+            // students[i].marks);
         }
-        
+
         // For-each loop
 
         // for (Student student : students){
-            // System.out.println(student.name);
+        // System.out.println(student.name);
         // }
 
         // StringBuffer
 
         // StringBuffer sb = new StringBuffer("Biswadip");
-        // System.out.println(sb.capacity()); // default is 16 and on passing values it consumes required space + 16
+        // System.out.println(sb.capacity()); // default is 16 and on passing values it
+        // consumes required space + 16
         // System.out.println(sb.length());
         // System.out.println(sb.append(" Saha"));
         // String str = sb.toString();
 
-        // Static 
+        // Static
 
         // Static variables
         Mobile.type = "Smartphone";
@@ -210,9 +219,9 @@ public class TeluskoJava {
         // Anonymous Class
 
         // OuterClass anonymous = new OuterClass(){
-            // public void show(){
-                // System.out.println("In new Show");
-            // }
+        // public void show(){
+        // System.out.println("In new Show");
+        // }
         // };
         // anonymous.show();
 
@@ -230,20 +239,17 @@ public class TeluskoJava {
         // System.out.println(status);
         // System.out.println(status.ordinal());
 
-        if (status == Status.Running){
+        if (status == Status.Running) {
             // System.out.println("Running..");
-        }
-        else if (status == Status.Pending){
+        } else if (status == Status.Pending) {
             // System.out.println("Pending..");
-        }
-        else if (status == Status.Failed){
+        } else if (status == Status.Failed) {
             // System.out.println("Failed..");
-        }
-        else if (status == Status.Success){
+        } else if (status == Status.Success) {
             // System.out.println("Success..");
         }
 
-        switch(status){
+        switch (status) {
             case Running:
                 // System.out.println("Running..");
                 break;
@@ -262,165 +268,251 @@ public class TeluskoJava {
         // System.out.println(lap + " : " + lap.getPrice());
 
         // Annotations
+        // @Override, @Deprecated, @FunctionalInteface
 
-        
+        // Lambda Expressions
+
+        // G lambdaObj1 = (lambdaNum) -> {
+        // System.out.println("in new show" + lambdaNum);
+        // };
+        // lambdaObj1.show(5);
+
+        // H lambdaObj2 = (num1, num2) -> {
+        // return num1 + num2;
+        // };
+        // System.out.println(lambdaObj2.add(2, 5));
+
+        // Exceptional Handling
+
+        int num4 = 20;
+        int num5 = 0;
+        // int[] numbers = new int[5];
+
+        try {
+            num5 = 18 / num4;
+            if (num5 == 0)
+                throw new ArithmeticException("I don't want to print zero");
+            // System.out.println(numbers[5]);
+        } catch (ArithmeticException e) {
+            num5 = 18 / 1;
+            // System.out.println("Thats the Default output. " + e);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            // System.out.println("Array out of bound exception");
+        } catch (Exception e) {
+            // System.out.println("Something went wrong");
+        }
+
+        // System.out.println(num5);
+        // System.out.println("Done");
+
+        // User Input
+
+        // System.out.println("Enter a number");
+        // int enteredNum = 0;
+        // try {
+        //     enteredNum = System.in.read();
+        // } catch (IOException e) {
+        //     System.out.println("IO exception");
+        // }
+        // System.out.println(enteredNum);
+
+        InputStreamReader in = new InputStreamReader(System.in);
+        BufferedReader bf = new BufferedReader(in);
+        int enteredBufferNum = 0;
+        try {
+            enteredBufferNum = Integer.parseInt(bf.readLine());
+        } 
+        catch (NumberFormatException e) {} 
+        catch (IOException e) {}
+        finally{
+            try {
+                bf.close();
+            } catch (IOException e) {}
+        }
+        // System.out.println(enteredBufferNum);
+
+        try (Scanner sc = new Scanner(System.in)) {
+            int scannerNum = sc.nextInt();
+            System.out.println(scannerNum);
+        }
+
+        // Try with Finally and Resources
+
+        try{}finally{}
+
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+            num5 = Integer.parseInt(br.readLine());
+            System.out.println(num5);
+        }catch (Exception e) {}
     }
 }
 
-
 // OOP
 // Object - Properties and Behaviours
-class Calculator{
+
+class Calculator {
     int num = 5; // instance variable
 
-    public int add(int num1, int num2){
+    public int add(int num1, int num2) {
         int r = num1 + num2;
         return r;
     }
-    public double add(double num1, double num2){
+
+    public double add(double num1, double num2) {
         double r = num1 + num2;
         return r;
     }
-    public int add(int num1, int num2, int num3){
+
+    public int add(int num1, int num2, int num3) {
         return num1 + num2 + num3;
     } // Method Overloading
 }
 
-class Student{
+class Student {
     int roll;
     String name;
     int marks;
 }
 
-class Mobile{
+class Mobile {
     String name;
     int price;
     static String type;
 
-    static{
-        type = "Smartphone"; 
+    static {
+        type = "Smartphone";
         // System.out.println("In static");
     }
 
-    public Mobile(){
+    public Mobile() {
         name = "";
         price = 0;
         // System.out.println("In constructor");
     }
 
-    public void show () {
+    public void show() {
         // System.out.println(name + " : " + price + " : " + type);
     }
 
-    public static void showAgain(Mobile phone){
+    public static void showAgain(Mobile phone) {
         // System.out.println(phone.name + " : " + phone.price + " : " + type);
     }
 }
 
-class Human{
+class Human {
     private String name;
     private int age;
 
-    public int getAge(){
+    public int getAge() {
         return age;
     }
-    public void setAge(int age){
+
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
 }
 
-// Every class in java extends to Object class if you don't define super class, Syntax : class A extends Object
-class A{                                                
-    public A(){
+// Every class in java extends to Object class if you don't define super class,
+// Syntax : class A extends Object
+class A {
+    public A() {
         super(); // calling Object() constructor
         System.out.println("in A");
     }
-    public A(int n){
+
+    public A(int n) {
         super(); // calling Object() constructor
         System.out.println("in A int");
     }
 }
 
-class B extends A{
-    public B(){
+class B extends A {
+    public B() {
         super(); // calling A() constructor
         System.out.println("in B");
     }
-    public B(int n){
+
+    public B(int n) {
         super(n); // calling A(n) constructor
         System.out.println("in B int");
     }
-    public B(int n, int m){
+
+    public B(int n, int m) {
         this(); // calling B() constructor
         System.out.println("in B int, int");
     }
 }
 
-class C{
-    public void show1(){
+class C {
+    public void show1() {
         System.out.println("in C show");
     }
 }
 
-class D extends C{
-    public void show2(){
+class D extends C {
+    public void show2() {
         System.out.println("in D show");
     }
 }
 
-abstract class Car{
+abstract class Car {
     public abstract void drive();
-    public void playMusic(){
+
+    public void playMusic() {
         System.out.println("PLay Music");
     }
 }
 
-class BMW extends Car{
-    public void drive(){
+class BMW extends Car {
+    public void drive() {
         System.out.println("Driving ...");
     }
 }
 
-class OuterClass{
-    public void show(){
+class OuterClass {
+    public void show() {
         System.out.println("Inside Outer Class");
     }
-    class InnerClass{
-        public void show(){
+
+    class InnerClass {
+        public void show() {
             System.out.println("Inside Inner Class");
         }
     }
 }
 
-interface E{
+interface E {
     int age = 20; // by default variables are final and static
     String area = "Mumbai";
 
     void show(); // by default they are public and default
+
     void config();
 }
 
-class F implements E{
-    public void show(){
+class F implements E {
+    public void show() {
         System.out.println("In F show");
     }
-    public void config(){
+
+    public void config() {
         System.out.println("In F config");
     }
 }
 
-enum Status{
+enum Status {
     Success, Pending, Failed, Running;
 }
 
-enum Laptop{
+enum Laptop {
     Macbook(2000), XPS(2200), Surface(1600), ThinkPad;
 
     private int price;
@@ -428,7 +520,7 @@ enum Laptop{
     private Laptop() {
     }
 
-    private Laptop(int price){
+    private Laptop(int price) {
         this.price = price;
     }
 
@@ -439,5 +531,15 @@ enum Laptop{
     public void setPrice(int price) {
         this.price = price;
     }
-    
+
+}
+
+@FunctionalInterface
+interface G {
+    void show(int lambdaNum);
+}
+
+@FunctionalInterface
+interface H {
+    int add(int num1, int num2);
 }
