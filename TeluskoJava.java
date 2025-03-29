@@ -1,10 +1,17 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
+@SuppressWarnings("unused")
 public class TeluskoJava {
-    @SuppressWarnings("unused")
     public static void main(String a[]) {
         // Ternary Operator
 
@@ -310,9 +317,9 @@ public class TeluskoJava {
         // System.out.println("Enter a number");
         // int enteredNum = 0;
         // try {
-        //     enteredNum = System.in.read();
+        // enteredNum = System.in.read();
         // } catch (IOException e) {
-        //     System.out.println("IO exception");
+        // System.out.println("IO exception");
         // }
         // System.out.println(enteredNum);
 
@@ -320,30 +327,64 @@ public class TeluskoJava {
         BufferedReader bf = new BufferedReader(in);
         int enteredBufferNum = 0;
         try {
-            enteredBufferNum = Integer.parseInt(bf.readLine());
-        } 
-        catch (NumberFormatException e) {} 
-        catch (IOException e) {}
-        finally{
+            // enteredBufferNum = Integer.parseInt(bf.readLine());
+        } catch (NumberFormatException e) {
+        }
+        // catch (IOException e) {}
+        finally {
             try {
                 bf.close();
-            } catch (IOException e) {}
+            } catch (IOException e) {
+            }
         }
         // System.out.println(enteredBufferNum);
 
         try (Scanner sc = new Scanner(System.in)) {
-            int scannerNum = sc.nextInt();
-            System.out.println(scannerNum);
+            // int scannerNum = sc.nextInt();
+            // System.out.println(scannerNum);
         }
 
         // Try with Finally and Resources
 
-        try{}finally{}
+        try {
+        } finally {
+        }
 
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             num5 = Integer.parseInt(br.readLine());
             System.out.println(num5);
-        }catch (Exception e) {}
+        } catch (Exception e) {
+        }
+
+        // Collection Interface
+
+        // ArrayList
+        List<Integer> numArrayList = new ArrayList<Integer>();
+        numArrayList.add(6);
+        numArrayList.add(8);
+        numArrayList.add(7);
+        numArrayList.add(7);
+        // System.out.println(numArrayList);
+        // System.out.println(numArrayList.get(2));
+
+        // Set
+        Set<Integer> numSet = new HashSet<Integer>();
+        numSet.add(6);
+        numSet.add(8);
+        numSet.add(7);
+        numSet.add(7);
+        // System.out.println(numSet);
+        // TreeSet supports sorted set while HashSet don't
+
+        // Map
+        Map<String, Integer> studentsMap = new HashMap<>();
+        studentsMap.put("Navin", 50);
+        studentsMap.put("Me", 40);
+        studentsMap.put("Kiran", 20);
+        // System.out.println(studentsMap);
+        for (String key : studentsMap.keySet()) {
+            // System.out.println(key + " : " + studentsMap.get(key));
+        }
     }
 }
 
