@@ -59,8 +59,8 @@ public class CliTicTacToe {
             }
 
             printBoard(board);
-            
-            if(ifWon(board, x, y)) {
+
+            if (ifWon(board, x, y)) {
                 System.out.println("Player " + player + " wins.");
                 break;
             }
