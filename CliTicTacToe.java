@@ -8,8 +8,9 @@ public class CliTicTacToe {
                 { 3, 3 } };
         int[][] enteredPlaces = new int[9][2];
 
-        int indexCount = 0, flag = 0;
-        int num1 = 0, num2 = 0, x = 0, y = 0;
+        int indexCount = 0, switchFlag = 0, turns = 0;
+        boolean flag = false;
+        int num1 = 0, num2 = 0;
         char player = 'X';
         System.out.println("Default Board :");
         setBoard(board);
@@ -17,6 +18,7 @@ public class CliTicTacToe {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
+            flag = false;
             System.out.println("Player " + player);
             System.out.print("Enter the Square number, in matrix form, you want to place your pattern : ");
 
@@ -27,25 +29,26 @@ public class CliTicTacToe {
             try {
                 for (int[] i : boardPlaces) {
                     if (Arrays.toString(i).equals(tempPlace)) {
+                        flag = true;
                         for (int[] j : enteredPlaces) {
                             if (Arrays.toString(j).equals(tempPlace))
                                 throw new AlreadyExistingError("This Place is Already Occupied.");
                         }
                         for (String j : placeInArrayString) {
-                            enteredPlaces[indexCount][flag] = Integer.parseInt(j);
-                            if (flag == 0) {
+                            enteredPlaces[indexCount][switchFlag] = Integer.parseInt(j);
+                            if (switchFlag == 0) {
                                 num1 = Integer.parseInt(j);
                             } else {
                                 num2 = Integer.parseInt(j);
                             }
-                            flag = (flag == 1) ? 0 : 1;
+                            switchFlag = (switchFlag == 1) ? 0 : 1;
                         }
                         board[num1 - 1][num2 - 1] = player;
                         break;
                     }
                 }
-                if (flag == 1) {
-                    flag = 0;
+                if (switchFlag == 1 || !flag) {
+                    switchFlag = 0;
                     throw new OutOfBoundError(
                             "Enter a valid Integer Value Number in Matrix form within 1,1 to 3,3");
                 }
@@ -59,13 +62,17 @@ public class CliTicTacToe {
             }
 
             printBoard(board);
+            turns++;
 
-            if (ifWon(board, x, y)) {
+            if (ifWon(board)) {
                 System.out.println("Player " + player + " wins.");
+                break;
+            } else if (turns == 9) {
+                System.out.println("DRAW !");
                 break;
             }
 
-            player = (player == 'X') ? 'O' : 'X';
+            player = (turns % 2 == 0) ? 'X' : 'O';
         }
 
         sc.close();
@@ -100,12 +107,25 @@ public class CliTicTacToe {
         }
     }
 
-    public static boolean ifWon(char[][] board, int x, int y) {
-        if (board[x][y] == board[x][y + 1] && board[x][y + 1] == board[x][y + 2]) {
+    public static boolean ifWon(char[][] board) {
+        if (((board[0][0] == board[0][1] && board[0][1] == board[0][2])
+                && (board[0][0] == 'X' || board[0][0] == 'O'))
+                || ((board[1][0] == board[1][1] && board[1][1] == board[1][2])
+                        && (board[1][0] == 'X' || board[1][0] == 'O'))
+                || ((board[2][0] == board[2][1] && board[2][1] == board[2][2])
+                        && (board[2][0] == 'X' || board[2][0] == 'O'))) {
             return true;
-        } else if (board[x][y] == board[x + 1][y] && board[x + 1][y] == board[x + 2][y]) {
+        } else if (((board[0][0] == board[1][0] && board[1][0] == board[2][0])
+                && (board[0][0] == 'X' || board[0][0] == 'O'))
+                || ((board[0][1] == board[1][1] && board[1][1] == board[2][1])
+                        && (board[0][1] == 'X' || board[0][1] == 'O'))
+                || ((board[0][2] == board[1][2] && board[1][2] == board[2][2])
+                        && (board[0][2] == 'X' || board[0][2] == 'O'))) {
             return true;
-        } else if (board[x][y] == board[x + 1][y + 1] && board[x + 1][y + 1] == board[x + 2][y + 2]) {
+        } else if (((board[0][0] == board[1][1] && board[1][1] == board[2][2])
+                && (board[0][0] == 'X' || board[0][0] == 'O'))
+                || ((board[0][2] == board[1][1] && board[1][1] == board[2][0])
+                        && (board[0][2] == 'X' || board[0][2] == 'O'))) {
             return true;
         } else {
             return false;
