@@ -9,9 +9,10 @@ public class CliTicTacToe {
         int[][] enteredPlaces = new int[9][2];
 
         int indexCount = 0, flag = 0;
-        String player = "X";
+        int num1 = 0, num2 = 0, x = 0, y = 0;
+        char player = 'X';
         System.out.println("Default Board :");
-        // setBoard(board);
+        setBoard(board);
 
         Scanner sc = new Scanner(System.in);
 
@@ -25,17 +26,22 @@ public class CliTicTacToe {
 
             try {
                 for (int[] i : boardPlaces) {
-                    flag = (flag == 1) ? 0 : 1;
                     if (Arrays.toString(i).equals(tempPlace)) {
                         for (int[] j : enteredPlaces) {
                             if (Arrays.toString(j).equals(tempPlace))
                                 throw new AlreadyExistingError("This Place is Already Occupied.");
                         }
                         for (String j : placeInArrayString) {
-                            flag = (flag == 1) ? 0 : 1;
                             enteredPlaces[indexCount][flag] = Integer.parseInt(j);
+                            if (flag == 0) {
+                                num1 = Integer.parseInt(j);
+                            } else {
+                                num2 = Integer.parseInt(j);
+                            }
+                            flag = (flag == 1) ? 0 : 1;
                         }
-                        flag = (flag == 1) ? 0 : 1;
+                        board[num1 - 1][num2 - 1] = player;
+                        break;
                     }
                 }
                 if (flag == 1) {
@@ -46,14 +52,20 @@ public class CliTicTacToe {
                 indexCount++;
             } catch (OutOfBoundError e) {
                 System.out.println(e.getMessage());
+                continue;
             } catch (AlreadyExistingError e) {
                 System.out.println(e.getMessage());
+                continue;
             }
 
-            // System.out.println(placeInString);
+            printBoard(board);
+            
+            if(ifWon(board, x, y)) {
+                System.out.println("Player " + player + " wins.");
+                break;
+            }
 
-            // printBoard(board);
-            break;
+            player = (player == 'X') ? 'O' : 'X';
         }
 
         sc.close();
@@ -85,6 +97,18 @@ public class CliTicTacToe {
                     System.out.println("   |   |   ");
                 }
             }
+        }
+    }
+
+    public static boolean ifWon(char[][] board, int x, int y) {
+        if (board[x][y] == board[x][y + 1] && board[x][y + 1] == board[x][y + 2]) {
+            return true;
+        } else if (board[x][y] == board[x + 1][y] && board[x + 1][y] == board[x + 2][y]) {
+            return true;
+        } else if (board[x][y] == board[x + 1][y + 1] && board[x + 1][y + 1] == board[x + 2][y + 2]) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
