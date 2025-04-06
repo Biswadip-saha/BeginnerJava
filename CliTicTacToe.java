@@ -2,15 +2,16 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class CliTicTacToe {
+    static String ERR_MSG_INVALID_MOVE = "Enter a valid Integer Value Number in Matrix form within 1,1 to 3,3";
+    static String ERR_MSG_SQUARE_ALREADY_OCCUPIED = "This Place is Already Occupied.";
+
     public static void main(String[] args) {
         char[][] board = new char[3][3];
         int[][] boardPlaces = { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 3, 1 }, { 3, 2 },
                 { 3, 3 } };
         int[][] enteredPlaces = new int[9][2];
 
-        int indexCount = 0, switchFlag = 0, turns = 0;
-        boolean flag = false;
-        int num1 = 0, num2 = 0;
+        int turns = 0;
         char player = 'X';
         System.out.println("Default Board :");
         setBoard(board);
@@ -18,46 +19,44 @@ public class CliTicTacToe {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            flag = false;
             System.out.println("Player " + player);
             System.out.print("Enter the Square number, in matrix form, you want to place your pattern : ");
 
-            String placeInString = sc.nextLine();
-            String[] placeInArrayString = placeInString.split(",");
-            String tempPlace = Arrays.toString(placeInArrayString);
-
+            String userInput = sc.nextLine();
             try {
+                String[] placeInArrayString = userInput.split(",");
+                if (placeInArrayString.length != 2)
+                    throw new OutOfBoundError(CliTicTacToe.ERR_MSG_INVALID_MOVE);
+                int[] placeInIntArray = new int[2];
+                for (int i = 0; i < placeInArrayString.length; i++) {
+                    placeInIntArray[i] = Integer.parseInt(placeInArrayString[i]);
+                }
+                if (placeInIntArray[0] < 1 || placeInIntArray[0] > 3)
+                    throw new OutOfBoundError(CliTicTacToe.ERR_MSG_INVALID_MOVE);
+                if (placeInIntArray[1] < 1 || placeInIntArray[1] > 3)
+                    throw new OutOfBoundError(CliTicTacToe.ERR_MSG_INVALID_MOVE);
+
+                String tempPlace = Arrays.toString(placeInArrayString);
+
                 for (int[] i : boardPlaces) {
                     if (Arrays.toString(i).equals(tempPlace)) {
-                        flag = true;
                         for (int[] j : enteredPlaces) {
                             if (Arrays.toString(j).equals(tempPlace))
-                                throw new AlreadyExistingError("This Place is Already Occupied.");
+                                throw new AlreadyExistingError(CliTicTacToe.ERR_MSG_SQUARE_ALREADY_OCCUPIED);
                         }
-                        for (String j : placeInArrayString) {
-                            enteredPlaces[indexCount][switchFlag] = Integer.parseInt(j);
-                            if (switchFlag == 0) {
-                                num1 = Integer.parseInt(j);
-                            } else {
-                                num2 = Integer.parseInt(j);
-                            }
-                            switchFlag = (switchFlag == 1) ? 0 : 1;
-                        }
-                        board[num1 - 1][num2 - 1] = player;
+                        enteredPlaces[turns] = placeInIntArray;
+                        board[placeInIntArray[0] - 1][placeInIntArray[1] - 1] = player;
                         break;
                     }
                 }
-                if (switchFlag == 1 || !flag) {
-                    switchFlag = 0;
-                    throw new OutOfBoundError(
-                            "Enter a valid Integer Value Number in Matrix form within 1,1 to 3,3");
-                }
-                indexCount++;
             } catch (OutOfBoundError e) {
                 System.out.println(e.getMessage());
                 continue;
             } catch (AlreadyExistingError e) {
                 System.out.println(e.getMessage());
+                continue;
+            } catch (NumberFormatException e) {
+                System.out.println(CliTicTacToe.ERR_MSG_INVALID_MOVE);
                 continue;
             }
 
@@ -86,7 +85,7 @@ public class CliTicTacToe {
         }
         for (int i = 1; i <= 9; i++) {
             if (i % 3 == 0 && i != 9) {
-                System.out.println("___|___|___");
+                System.out.println("||_");
             } else {
                 System.out.println("   |   |   ");
             }
@@ -99,7 +98,7 @@ public class CliTicTacToe {
                 System.out.println("   |   |   ");
                 System.out.println(" " + board[i][j] + " | " + board[i][j + 1] + " | " + board[i][j + 2]);
                 if (i != 2) {
-                    System.out.println("___|___|___");
+                    System.out.println("||_");
                 } else {
                     System.out.println("   |   |   ");
                 }
@@ -142,5 +141,5 @@ class OutOfBoundError extends Exception {
 class AlreadyExistingError extends Exception {
     public AlreadyExistingError(String message) {
         super(message);
-    }
+    }
 }
