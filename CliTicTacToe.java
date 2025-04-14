@@ -85,7 +85,7 @@ public class CliTicTacToe {
         }
         for (int i = 1; i <= 9; i++) {
             if (i % 3 == 0 && i != 9) {
-                System.out.println("||_");
+                System.out.println("___|___|___");
             } else {
                 System.out.println("   |   |   ");
             }
@@ -98,7 +98,7 @@ public class CliTicTacToe {
                 System.out.println("   |   |   ");
                 System.out.println(" " + board[i][j] + " | " + board[i][j + 1] + " | " + board[i][j + 2]);
                 if (i != 2) {
-                    System.out.println("||_");
+                    System.out.println("___|___|___");
                 } else {
                     System.out.println("   |   |   ");
                 }
@@ -141,5 +141,5 @@ class OutOfBoundError extends Exception {
 class AlreadyExistingError extends Exception {
     public AlreadyExistingError(String message) {
         super(message);
-    }
+    }
 }
